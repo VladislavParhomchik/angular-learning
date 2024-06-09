@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MyCalculatorModule } from './calculator/my-calculator.module';
 import { MyNavigation } from './components/navigation/navigation.component';
 import { MyEmptyPage } from './components/empty-route/empty-route.component';
+import { DirectivesModule } from './directives/directives.module';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { MyEmptyPage } from './components/empty-route/empty-route.component';
     AppRoutingModule,
     ReactiveFormsModule,
     MyCalculatorModule,
+    DirectivesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

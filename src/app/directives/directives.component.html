@@ -1,0 +1,134 @@
+<!------------------------------- HOW *ngFor WORKS ------------------------------->
+
+<!------------------------ 1st *ngFor example ------------------------>
+<!-- <div 
+    *ngFor="
+        let color of colors; 
+        let i = index; 
+        let first = first; 
+        let last = last;
+    "
+>
+    <span>
+        {{ i }}. 
+        {{ first ? 'I am first': '' }} 
+        {{ last ? 'I am last': '' }} 
+        {{ color }}
+    </span>
+</div> -->
+
+<!------------------------ 2nd *ngFor example for Angular 17 ------------------------>
+
+<div>
+    @for (color of colors; track color; let i = $index; let first = $first; let last = $last ) {
+    <div>
+        <span>
+            {{ i }}. 
+            {{ first ? 'I am first': '' }} 
+            {{ last ? 'I am last': '' }} 
+            {{ color }}
+        </span>
+    </div>
+    }
+    @empty {
+    <span>Empty array</span>
+    }
+</div>
+
+<!------------------------------- HOW *ngIf WORKS ------------------------------->
+
+<!------------------------ 1st *ngIf example ------------------------>
+<!-- <div *ngIf = "isShow; else emptyState">
+    <span>{{isShow}} I showed up because value is true</span>
+</div>
+
+<button (click)="isShow = !isShow">Click</button>
+
+<ng-template #emptyState>
+    <span>{{ isShow }} I showed up because value is false</span>
+</ng-template> -->
+
+<!------------------------ 2nd *ngIf example for Angular 17 ------------------------>
+<div>
+    @if (isShow) {
+    <span>{{isShow}} I showed up because value is true</span>
+}
+@else {
+    <span>{{ isShow }} I showed up because value is false</span>
+}
+<button (click)="isShow = !isShow">Click</button>
+</div>
+
+
+<!------------------------------- HOW *ngSwitch WORKS ------------------------------->
+
+<!------------------------ 1st *ngSwitch example ------------------------>
+<!-- @for ( color of colors; track color ) {
+    <div>
+        <button (click)="currentColor = color">
+            {{ color }}
+        </button>
+    </div>
+}
+
+<div [ngSwitch]="currentColor">
+    <span *ngSwitchCase="'red'">The color is RED</span>
+    <span *ngSwitchCase="'blue'">The color is BLUE</span>
+    <span *ngSwitchCase="'green'">The color is GREEN</span>
+    <span *ngSwitchCase="'yellow'">The color is YELLOW</span>
+</div> -->
+
+<!------------------------ 2nd *ngFor example for Angular 17 ------------------------>
+<div>
+    @for ( color of colors; track color ) {
+        <div>
+            <button (click)="currentColor = color">
+                {{ color }}
+            </button>
+        </div>
+    }
+    
+    @switch (currentColor) {
+        @case ('red') {
+            <span>The color is RED</span>
+        }
+        @case ('blue') {
+            <span>The color is BLUE</span>
+        }
+        @case ('green') {
+            <span>The color is GREEN</span>
+        }
+        @case ('yellow') {
+            <span>The color is YELLOW</span>
+        }
+        @default {
+            <div>The color is not set up</div>
+        }
+    }
+</div>
+
+
+<!------------------------------- HOW *ngStyle WORKS ------------------------------->
+
+<div>
+    <span [ngStyle]="elementStyle"> I am text changed by class field</span>
+</div>
+
+<!-- Можно добавлять напрямую объект в ngStyle -->
+<div>
+    <span [ngStyle]="{ color: 'green', opacity: 0.5}"> I am text changed by class field</span>
+</div>
+
+
+<!------------------------------- HOW *ngClass WORKS ------------------------------->
+
+<!-- Передаем массив с классами 
+(Важно! Эти классы не заменят текущие классы,
+ они добавятся как дополнительные классы к данному элементу) -->
+<span [ngClass]="['red']"></span>
+
+<!--Можно добавлять классы через логические цепочки-->
+<span [ngClass]="isShow ? 'show' : ''"></span> 
+
+<!-- ЗАМЕНИТЬ текущие классы данному элементу -->
+<!-- <span [attr.class]=""]></span> -->
