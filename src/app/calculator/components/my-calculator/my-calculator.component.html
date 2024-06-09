@@ -1,0 +1,50 @@
+<div class="calculator">
+    <h2 class="calculator__title">Calculator</h2>
+
+    <ng-container *ngFor="let group of calcGroups; let i = index;">
+        <div class="calculator__container">
+            <span>(</span>
+            <select class="calculator__modifier" [(ngModel)]="group.first.modifier">
+                <option [value]="modifier.value" *ngFor="let modifier of calcModifiers | keyvalue">
+                    {{modifier.value}}
+                </option>
+            </select>
+            <input type="number" class="calculator__input" [(ngModel)]="group.first.value">
+            <select class="calculator__select" [(ngModel)]="group.operation">
+                <option [value]="operation.value" *ngFor="let operation of calcOperations | keyvalue">
+                    {{operation.value}}
+                </option>
+            </select>
+            <select class="calculator__modifier" [(ngModel)]="group.second.modifier">
+                <option [value]="modifier.value" *ngFor="let modifier of calcModifiers | keyvalue">
+                    {{modifier.value}}
+                </option>
+            </select>
+            <input type="number" class="calculator__input" [(ngModel)]="group.second.value">
+        <span>)</span>
+        <button *ngIf="i !== 0 "  (click)="removeGroup(i)">Delete</button>
+        </div>  
+        
+        <select class="calculator__select" [(ngModel)]="operationsBetweenGroups[i]" *ngIf="operationsBetweenGroups.length > i ">
+            <option [value]="operation.value" *ngFor="let operation of calcOperations | keyvalue">
+                {{operation.value}}
+            </option>
+        </select>
+        
+    </ng-container>
+    <span class="calculator__result">Result: <span>{{ result ?? 'Press Calculate!' }}</span></span>
+   
+    <div class="calculator__history">
+        <span class="calculator__history-tittle">Operation history</span>
+        <span *ngFor="let obj of history; let i = index">{{i + 1}} {{obj}}</span>
+    </div>
+
+    <div>
+        <button class="calculator__btn" (click)="calcGroup()">Calculate</button>
+        <button class="calculator__btn" (click)="addGroup()">Add group</button>
+    </div>
+</div>
+
+
+
+<!-- {{ result ?? 'Press Calculate!' }}  - operator check if result is null or undefined if so - we can see Press Calculate -->
