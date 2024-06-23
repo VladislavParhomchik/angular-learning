@@ -1,3 +1,18 @@
+<h2 [myChangeColor]="colors">Directives</h2>
+
+
+<span *myIf="isShow">{{ isShow }}</span>
+
+<br />
+
+<button (click)="isShow = !isShow">Click me!</button>
+
+
+
+
+
+
+
 <!------------------------------- HOW *ngFor WORKS ------------------------------->
 
 <!------------------------ 1st *ngFor example ------------------------>
@@ -19,7 +34,7 @@
 
 <!------------------------ 2nd *ngFor example for Angular 17 ------------------------>
 
-<div>
+<!-- <div>
     @for (color of colors; track color; let i = $index; let first = $first; let last = $last ) {
     <div>
         <span>
@@ -33,7 +48,7 @@
     @empty {
     <span>Empty array</span>
     }
-</div>
+</div> -->
 
 <!------------------------------- HOW *ngIf WORKS ------------------------------->
 
@@ -49,7 +64,7 @@
 </ng-template> -->
 
 <!------------------------ 2nd *ngIf example for Angular 17 ------------------------>
-<div>
+<!-- <div>
     @if (isShow) {
     <span>{{isShow}} I showed up because value is true</span>
 }
@@ -57,7 +72,7 @@
     <span>{{ isShow }} I showed up because value is false</span>
 }
 <button (click)="isShow = !isShow">Click</button>
-</div>
+</div> -->
 
 
 <!------------------------------- HOW *ngSwitch WORKS ------------------------------->
@@ -79,7 +94,7 @@
 </div> -->
 
 <!------------------------ 2nd *ngFor example for Angular 17 ------------------------>
-<div>
+<!-- <div>
     @for ( color of colors; track color ) {
         <div>
             <button (click)="currentColor = color">
@@ -105,19 +120,19 @@
             <div>The color is not set up</div>
         }
     }
-</div>
+</div> -->
 
 
 <!------------------------------- HOW *ngStyle WORKS ------------------------------->
 
-<div>
+<!-- <div>
     <span [ngStyle]="elementStyle"> I am text changed by class field</span>
-</div>
+</div> -->
 
 <!-- Можно добавлять напрямую объект в ngStyle -->
-<div>
+<!-- <div>
     <span [ngStyle]="{ color: 'green', opacity: 0.5}"> I am text changed by class field</span>
-</div>
+</div> -->
 
 
 <!------------------------------- HOW *ngClass WORKS ------------------------------->
@@ -125,10 +140,10 @@
 <!-- Передаем массив с классами 
 (Важно! Эти классы не заменят текущие классы,
  они добавятся как дополнительные классы к данному элементу) -->
-<span [ngClass]="['red']"></span>
+<!-- <span [ngClass]="['red']"></span> -->
 
 <!--Можно добавлять классы через логические цепочки-->
-<span [ngClass]="isShow ? 'show' : ''"></span> 
+<!-- <span [ngClass]="isShow ? 'show' : ''"></span>  -->
 
 <!-- ЗАМЕНИТЬ текущие классы данному элементу -->
 <!-- <span [attr.class]=""]></span> -->
